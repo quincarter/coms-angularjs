@@ -19,10 +19,10 @@ import { EmailTemplateComponent } from './templates/email/email.component';
 import { EditorTemplateComponent } from './templates/editor/editor.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
+  {path: '', component: LoginComponent},
   {path: '', component: MainComponent, children: [{
       component: DashboardComponent,
-      path: '',
+      path: 'dashboard',
     },
     {path: 'product', component: DashboardProductComponent, children: [
       {path: '', component: ProductOverviewComponent},
