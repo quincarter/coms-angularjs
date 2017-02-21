@@ -4,15 +4,20 @@ import { Title }     from '@angular/platform-browser';
 
 import { TdLoadingService } from '@covalent/core';
 
-import { ItemsService, UsersService, ProductsService, AlertsService } from '../../services';
+import { ItemsService, UsersService, ProductsService, AlertsService, ReportsService } from '../../services';
 
 import { multi } from './data';
 
+import { Http, Response } from '@angular/http';
+
+import {Observable} from "rxjs";
+
 @Component({
-  selector: 'qs-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
-  viewProviders: [ ItemsService, UsersService, ProductsService, AlertsService ],
+    selector: 'qs-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss'],
+    viewProviders: [ ItemsService, UsersService, ProductsService, AlertsService ],
+    providers: [ReportsService]
 })
 export class DashboardComponent implements AfterViewInit {
 
@@ -20,6 +25,9 @@ export class DashboardComponent implements AfterViewInit {
   users: Object[];
   products: Object[];
   alerts: Object[];
+  reportsArray: Object[];
+
+  reportsJson: string;
 
   // Chart
   single: any[];
@@ -45,11 +53,13 @@ export class DashboardComponent implements AfterViewInit {
   autoScale: boolean = true;
 
   constructor(private _titleService: Title,
+              private _reportsService: ReportsService,
               private _itemsService: ItemsService,
               private _usersService: UsersService,
               private _alertsService: AlertsService,
               private _productsService: ProductsService,
-              private _loadingService: TdLoadingService) {
+              private _loadingService: TdLoadingService,
+              private http: Http) {
                 // Chart
                 this.multi = multi.map((group: any) => {
                   group.series = group.series.map((dataItem: any) => {
@@ -58,10 +68,26 @@ export class DashboardComponent implements AfterViewInit {
                   });
                   return group;
                 });
+
+                const reports = this._reportsService.getReports();
+                console.log(reports);
+
   }
 
-  ngAfterViewInit(): void {
-    this._titleService.setTitle( 'Covalent Quickstart' );
+  getReportNames()
+  {
+      this._reportsService.getReports()
+          .subscribe(
+              data => this.reportsJson = JSON.stringify(data),
+              error => alert(error),
+              () => console.log("finshed json get")
+          );
+  }
+  ngAfterViewInit():
+  void
+  {
+    this._reportsService.getReports();
+    this._titleService.setTitle( 'COMS' );
     this._loadingService.register('items.load');
     this._itemsService.query().subscribe((items: Object[]) => {
       this.items = items;

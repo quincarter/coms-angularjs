@@ -1,12 +1,12 @@
 <div layout="column" layout-fill>
   <md-toolbar color="primary" class="md-whiteframe-z1">
-    <span>Campus Operations Management System | Login</span>
+    <span><img class="lisdLoginLogoWhite" src="assets/images/LISDWhite.png">Campus Operations Management System | Login</span>
   </md-toolbar>
   <div class="md-content" layout-padding flex>
     <div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin">
       <div flex-gt-xs="50">
         <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']">
-          <md-card-title><strong>CO</strong>MS Login</md-card-title>
+          <md-card-title><strong>CO</strong>MS Login</md-card-title><img class="lisdLoginLogo" src="assets/images/LISDColor.png">
           <md-card-subtitle>Login Using your LISD credentials</md-card-subtitle>
           <md-divider></md-divider>
           <md-card-content>
@@ -18,7 +18,7 @@
                   <md-hint align="start">
                     <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
                   </md-hint>
-                  <md-hint align="end">{{userElement.value.length}} / 30</md-hint>
+                  <md-hint align="end">{{userElement.value.length}} / 50</md-hint>
                 </md-input-container>
               </div>
               <div layout="row" id="formInputsDiv">
@@ -33,7 +33,7 @@
               </div>
               <md-divider></md-divider>
               <md-card-actions layout="row">
-                <button flex md-raised-button color="accent" [disabled]="!loginForm.form.valid" type="submit">Sign In</button>
+                <button id="loginButton" flex md-raised-button color="accent" [disabled]="!loginForm.form.valid" type="submit">Sign In</button>
               </md-card-actions>
             </form>
           </md-card-content>
