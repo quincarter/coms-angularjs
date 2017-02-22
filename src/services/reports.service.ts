@@ -7,34 +7,17 @@ import 'rxjs/Rx';
 @Injectable()
 export class ReportsService {
 
-    constructor (private http: Http) {}
+    constructor (private http: Http) {
 
-    private reportURL = 'http://tools.lisd.net/dev/coms/reports.json';
+    }
 
-  /*  getReportNames () : Observable<string>  {
-
-        /!*const _paramUrl = this.reportURL;
-
-        return this.http.get(_paramUrl)
-            .map((res: Response) => {
-                //console.log(res.json());
-                return res.json();
-            });*!/
-    }*/
-
-    /*getReportNames(): Observable<ReportsService[]> {
-        return this.http.get('https://tools.lisd.net/dev/coms/reports.json')
-            .map((res: Response) => {
-                //console.log(res.json());
-                return res.json();
-            });
-    }*/
+    private url = "https://tools.lisd.net/comsrestfulservices/getReportNamesjson.php";
 
     getReports()
     {
-        let url = "http://tools.lisd.net/dev/coms/getreportnamesjson.php";
-        return this.http.get(url)
-            .map(res => res.json());
+        //let url = "./assets/php/getreportnamesjson.php";
+        return this.http.get(this.url)
+            .map(res => res.json().reports);
     }
 
     private handleError (error: Response) {

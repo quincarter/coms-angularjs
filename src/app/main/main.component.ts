@@ -10,9 +10,9 @@ export class MainComponent {
 
   routes: Object[] = [{
       title: 'Dashboard',
-      route: '/',
+      route: '/dashboard',
       icon: 'dashboard',
-    }, {
+    }, /*{
       title: 'Product Dashboard',
       route: '/product',
       icon: 'view_quilt',
@@ -28,7 +28,7 @@ export class MainComponent {
       title: 'Covalent Templates',
       route: '/templates',
       icon: 'view_module',
-    },
+    },*/
   ];
 
   constructor(private _router: Router) {}

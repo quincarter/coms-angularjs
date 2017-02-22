@@ -78,7 +78,7 @@ export class DashboardComponent implements AfterViewInit {
                                         .subscribe(
                                             data => this.reportsJson = data,
                                             error => alert(error)
-                                        );}, 500);
+                                        );}, 500000);
 
   }
 
