@@ -10,6 +10,7 @@ import { CovalentChartsModule } from '@covalent/charts';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { StudentSearchComponent } from './studentSearch/studentSearch.component';
 import { UsersComponent } from './users/users.component';
 import { UsersFormComponent } from './users/+form/form.component';
 import { LogsComponent } from './logs/logs.component';
@@ -32,6 +33,7 @@ import { ChartComponent } from '../components/chart/chart.component';
 import { RequestInterceptor } from '../config/interceptors/request.interceptor';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import {MaterialModule} from "@angular/material";
 
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -42,6 +44,7 @@ const httpInterceptorProviders: Type<any>[] = [
     AppComponent,
     MainComponent,
     DashboardComponent,
+    StudentSearchComponent,
     DashboardProductComponent,
     ProductOverviewComponent,
     ProductStatsComponent,
@@ -63,6 +66,7 @@ const httpInterceptorProviders: Type<any>[] = [
     BrowserModule,
     CovalentCoreModule.forRoot(),
     CovalentChartsModule.forRoot(),
+    MaterialModule,
     CovalentHttpModule.forRoot({
       interceptors: [{
         interceptor: RequestInterceptor, paths: ['**'],

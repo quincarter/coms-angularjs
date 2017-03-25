@@ -11,3 +11,111 @@ a[md-icon-button] {
 .text-capital {
   text-transform: capitalize;
 }
+
+div#formInputsDiv
+{
+  padding-bottom: 15px;
+}
+
+.md-content
+{
+  background: url("assets/images/LISDBackground.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+img.lisdLoginLogo {
+  width: 118.83px;
+  height: 98px;
+  float: right;
+  position: absolute;
+  bottom: 69%;
+  right: 3%;
+}
+
+img.lisdLoginLogoWhite {
+  width: 50px;
+  padding-right: 8px;
+  display: inline-block;
+}
+
+span.toolbarText
+{
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;;
+  /*width: 500px;*/
+  white-space: nowrap;
+  overflow: hidden;
+
+  /* for good looks */
+  padding: 10px;
+}
+
+div.box.boxIcon
+{
+  width: 75px;
+  height: 75px;
+  position: relative;
+/*  left: 16px;
+  top: -16px;*/
+  float: right;
+}
+
+md-icon.reportIcon {
+  position: relative;
+  float: right;
+  font-size: 69px;
+  text-align: center;
+  vertical-align: middle;
+  /*  left: 300px;
+    bottom: -6px;*/
+}
+
+md-card-title
+{
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;;
+  /*width: 500px;*/
+  white-space: nowrap;
+  overflow: hidden;
+
+  /* for good looks */
+  padding: 10px;
+}
+
+
+div.notificationBubble
+{
+  line-height: 21px;
+  width: 20px;
+  height: 20px;
+  /* display: -webkit-inline-box; */
+  position: absolute;
+  top: -10px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 50%;
+  z-index: 1;
+  left: -8px;
+}
+
+.viewListCardActions
+{
+  padding: 0;
+}
+
+.viewListButton
+{
+  padding: 0;
+  width: 100%;
+
+}
+
+.lisdFooterLogo
+{
+  width: 44px;
+}
