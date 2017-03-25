@@ -16,35 +16,17 @@
   </div>
   <div class="md-content" flex md-scroll-y>
     <div class="row reportsRow">
-      <h2 class="sectionTitle">To-Do Lists</h2>
+      <h2 class="sectionTitle">Student Search</h2>
     </div>
-    <div class="row reportsRow">
-      <div  class="col-md-3 toDoListCardCol" *ngFor="let report of reportsJson">
-        <md-card class="toDoListCard">
-          <div class="box boxIcon bg-{{ report.iconColor }}">
-            <div class="notificationBubble bg-red-gradient">
-              {{report.notificationTotal}}
-            </div>
-              <md-icon class="reportIcon">
-                {{ report.reportIcon }}
-              </md-icon>
-          </div>
-          <md-card-title>
-            {{ report.reportName }}
-          </md-card-title>
-          <md-card-content class="reportCardContent">
-            <p>{{ report.listDescription }}</p>
-          </md-card-content>
-          <md-divider></md-divider>
-          <md-card-actions class="viewListCardActions">
-            <span>
-              <button class="viewListButton" md-button>View List</button>
-            </span>
-          </md-card-actions>
-        </md-card>
-      </div>
+    <md-input-container>
+      <input mdInput placeholder="State" [mdAutocomplete]="auto" [formControl]="stateCtrl">
+    </md-input-container>
 
-    </div>
+    <md-autocomplete #auto="mdAutocomplete">
+      <md-option *ngFor="let state of filteredStates | async" [value]="state">
+        {{ state }}
+      </md-option>
+    </md-autocomplete>
   </div>
   <td-layout-footer>
     <div layout="row" layout-align="start center">

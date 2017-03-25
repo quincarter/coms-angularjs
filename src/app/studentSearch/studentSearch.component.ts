@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-
+import {FormControl} from '@angular/forms';
 import { Title }     from '@angular/platform-browser';
 
 import { TdLoadingService } from '@covalent/core';
@@ -7,19 +7,94 @@ import { TdLoadingService } from '@covalent/core';
 import { ItemsService, UsersService, ProductsService, AlertsService, ReportsService } from '../../services';
 
 import { multi } from './data';
+import 'rxjs/add/operator/startWith';
+
 import { Router } from '@angular/router';
 import { Http, Response } from '@angular/http';
 
 import {Observable} from "rxjs";
+import {SearchService} from "../../services/search.service";
 
 @Component({
-    selector: 'qs-dashboard',
-    templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.scss'],
-    viewProviders: [ ItemsService, UsersService, ProductsService, AlertsService ],
-    providers: [ReportsService]
+    selector: 'qs-studentSearch',
+    templateUrl: './studentSearch.component.html',
+    styleUrls: ['./studentSearch.component.scss'],
+    viewProviders: [ /*ItemsService, UsersService, ProductsService, AlertsService*/ ],
+    providers: [/*ReportsService*/]
 })
-export class DashboardComponent implements AfterViewInit {
+
+export class StudentSearchComponent {
+  stateCtrl: FormControl;
+  filteredStates: any;
+
+  states = [
+    'Alabama',
+    'Alaska',
+    'Arizona',
+    'Arkansas',
+    'California',
+    'Colorado',
+    'Connecticut',
+    'Delaware',
+    'Florida',
+    'Georgia',
+    'Hawaii',
+    'Idaho',
+    'Illinois',
+    'Indiana',
+    'Iowa',
+    'Kansas',
+    'Kentucky',
+    'Louisiana',
+    'Maine',
+    'Maryland',
+    'Massachusetts',
+    'Michigan',
+    'Minnesota',
+    'Mississippi',
+    'Missouri',
+    'Montana',
+    'Nebraska',
+    'Nevada',
+    'New Hampshire',
+    'New Jersey',
+    'New Mexico',
+    'New York',
+    'North Carolina',
+    'North Dakota',
+    'Ohio',
+    'Oklahoma',
+    'Oregon',
+    'Pennsylvania',
+    'Rhode Island',
+    'South Carolina',
+    'South Dakota',
+    'Tennessee',
+    'Texas',
+    'Utah',
+    'Vermont',
+    'Virginia',
+    'Washington',
+    'West Virginia',
+    'Wisconsin',
+    'Wyoming',
+  ];
+
+  constructor() {
+    this.stateCtrl = new FormControl();
+    this.filteredStates = this.stateCtrl.valueChanges
+        .startWith(null)
+        .map(name => this.filterStates(name));
+  }
+
+  filterStates(val: string) {
+    return val ? this.states.filter((s) => new RegExp(val, 'gi').test(s)) : this.states;
+  }
+
+}
+
+/*
+export class StudentSearchComponent implements AfterViewInit {
 
   items: Object[];
   users: Object[];
@@ -60,6 +135,7 @@ export class DashboardComponent implements AfterViewInit {
               private _alertsService: AlertsService,
               private _productsService: ProductsService,
               private _loadingService: TdLoadingService,
+              private _searchService: SearchService,
               private http: Http,
               private _router: Router) {
                 // Chart
@@ -72,7 +148,7 @@ export class DashboardComponent implements AfterViewInit {
                 });
 
                 /*const reports = this._reportsService.getReports();
-                console.log(reports);*/
+                console.log(reports);
 
                 setInterval(() => {this._reportsService.getReports()
                                         .subscribe(
@@ -82,15 +158,6 @@ export class DashboardComponent implements AfterViewInit {
 
   }
 
-  getReportNames()
-  {
-      this._reportsService.getReports()
-          .subscribe(
-              data => this.reportsJson = data,
-              error => alert(error),
-              () => console.log(this.reportsJson)
-          );
-  }
   ngAfterViewInit():
   void
   {
@@ -100,6 +167,8 @@ export class DashboardComponent implements AfterViewInit {
             error => alert(error),
             () => console.log(this.reportsJson)
         );
+    states = this._searchService.states;
+    this._searchService.
     this._titleService.setTitle( 'COMS' );
     this._loadingService.register('items.load');
     this._itemsService.query().subscribe((items: Object[]) => {
@@ -156,4 +225,6 @@ export class DashboardComponent implements AfterViewInit {
     {
         this._router.navigate(['/']);
     }
-}
+}*/
+
+

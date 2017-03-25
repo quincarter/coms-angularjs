@@ -12,7 +12,12 @@ export class MainComponent {
       title: 'Dashboard',
       route: '/dashboard',
       icon: 'dashboard',
-    }, /*{
+    },
+      {
+          title: 'Student Search',
+          route: '/studentSearch',
+          icon: 'search',
+      }/*{
       title: 'Product Dashboard',
       route: '/product',
       icon: 'view_quilt',
